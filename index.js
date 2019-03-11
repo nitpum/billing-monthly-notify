@@ -43,7 +43,7 @@ module.exports = function (context, cb) {
               "fields": [
                 {
                   "name": "Promptpay",
-                  "value": context.secret.promptpayId,
+                  "value": context.secrets.promptpayId,
                   "inline": true
                 },
                 {
