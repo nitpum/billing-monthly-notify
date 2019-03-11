@@ -16,19 +16,21 @@ module.exports = function (context, cb) {
     })
   })
   .then(function (png) {
+    /*
     users.forEach(function(element) {
-    axios.get('https://discordapp.com/api/v6/users/@me/channels', {
-      headers: {
-        'Authorization': 'Bot ' + context.secrets.botId,
-        'Content-Type': 'application/json',
-        'recipient_id': element
-      }
-    })
+      axios.get('https://discordapp.com/api/v6/users/@me/channels', {
+        headers: {
+          'Authorization': 'Bot ' + context.secrets.botId,
+          'Content-Type': 'application/json',
+          'recipient_id': element
+        }
+      })
       .then(function (res) {
         console.log(res);
       });
     
     });
+    */
     cb();
   });
   
