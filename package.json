@@ -1,0 +1,24 @@
+{
+  "name": "payment-monthly-notification",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/nitpum/payment-monthly-notification.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/nitpum/payment-monthly-notification/issues"
+  },
+  "homepage": "https://github.com/nitpum/payment-monthly-notification#readme",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "promptpay-qr": "^0.4.4",
+    "qrcode": "^1.3.3"
+  }
+}
