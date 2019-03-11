@@ -16,7 +16,7 @@ module.exports = function (context, cb) {
     })
   })
   .then(function (png) {
-    console.log(users);
+    console.log(users.length);
     /*
     users.forEach(function(element) {
       axios.get('https://discordapp.com/api/v6/users/@me/channels', {
