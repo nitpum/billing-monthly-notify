@@ -16,7 +16,7 @@ module.exports = function (context, cb) {
     })
   })
   .then(function (png) {
-    console.log(users.length);
+    console.log(typeof users);
     users.forEach(function (element) {
       console.log(element);
     });
