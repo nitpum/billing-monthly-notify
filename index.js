@@ -3,7 +3,7 @@ const promptpay = require('promptpay-qr');
 const axios = require('axios');
 
 module.exports = function (context, cb) {
-  var user = context.secrets.users;
+  var user = JSON.parse(context.secrets.users);
   var amount = context.secrets.amount;
   console.log(users);
 
