@@ -1,9 +1,9 @@
 const qrcode = require('qrcode');
 const generatePayload = require('promptpay-qr');
 const axios = require('axios');
-
+var users = [];
 module.exports = function (context, cb) {
-  var users = JSON.parse(context.secrets.users);
+  users = JSON.parse(context.secrets.users);
   var amount = context.secrets.amount;
   console.log(users);
 
