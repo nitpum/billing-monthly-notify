@@ -3,7 +3,7 @@ const promptpay = require('promptpay-qr');
 const axios = require('axios');
 
 module.exports = function (context, cb) {
-  var user = JSON.parse(context.secrets.users);
+  var users = context.secrets.users;
   var amount = context.secrets.amount;
   console.log(users);
 
@@ -17,7 +17,7 @@ module.exports = function (context, cb) {
     })
   })
 
-  user.forEach(element => {
+  users.forEach(element => {
     axios.get('https://discordapp.com/api/v6/users/@me/channels', {
       headers: {
         'Authorization': 'Bot ' + context.secrets.botId,
