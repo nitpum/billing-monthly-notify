@@ -15,8 +15,8 @@ module.exports = function (context, cb) {
       resolve(svg)
     })
   })
-
-  users.forEach(element => {
+  .then(function (png) {
+    users.forEach(function(element) {
     axios.get('https://discordapp.com/api/v6/users/@me/channels', {
       headers: {
         'Authorization': 'Bot ' + context.secrets.botId,
@@ -28,6 +28,9 @@ module.exports = function (context, cb) {
         console.log(res);
       });
     
+    });
+    cb();
   });
-  cb();
+  
+  
 }
