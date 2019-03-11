@@ -1,5 +1,5 @@
 const qrcode = require('qrcode');
-const promptpay = require('promptpay-qr');
+const generatePayload = require('promptpay-qr');
 const axios = require('axios');
 
 module.exports = function (context, cb) {
