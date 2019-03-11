@@ -18,11 +18,10 @@ module.exports = function (context, cb) {
   .then(function (png) {
     
     users.forEach(function(element) {
-      axios.post('https://discordapp.com/api/v6/users/@me/channels', {}, {
+      axios.post('https://discordapp.com/api/v6/users/@me/channels', {'recipient_id': element}, {
         headers: {
           'Authorization': 'Bot ' + context.secrets.botId,
-          'Content-Type': 'application/json',
-          'recipient_id': element
+          'Content-Type': 'application/json'
         }
       })
       .then(function (res) {
