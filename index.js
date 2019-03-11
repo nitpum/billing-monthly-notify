@@ -16,7 +16,7 @@ module.exports = function (context, cb) {
     })
   })
   .then(function (png) {
-    /*
+    
     users.forEach(function(element) {
       axios.get('https://discordapp.com/api/v6/users/@me/channels', {
         headers: {
@@ -30,7 +30,7 @@ module.exports = function (context, cb) {
       });
     
     });
-    */
+    
     cb();
   });
   
