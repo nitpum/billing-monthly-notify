@@ -2,11 +2,12 @@ const qrcode = require('qrcode');
 const generatePayload = require('promptpay-qr');
 const axios = require('axios');
 var users = [];
+
 module.exports = function (context, cb) {
   users = JSON.parse(context.secrets.users);
   var amount = context.secrets.amount;
-  console.log(users);
 
+  // Create QR Code 
   const payload = generatePayload(context.secrets.promptpayId, { amount });
   var options = { type: 'png', color: { dark: '#003b6a', light: '#f7f8f7' } }
   new Promise((resolve, reject) => {
@@ -16,8 +17,9 @@ module.exports = function (context, cb) {
     })
   })
   .then(function (png) {
-    
+    // Send qr code to users
     users.forEach(function(element) {
+      // Get users DM channel
       axios.post('https://discordapp.com/api/v6/users/@me/channels', {'recipient_id': element}, {
         headers: {
           'Authorization': 'Bot ' + context.secrets.botId,
@@ -25,12 +27,10 @@ module.exports = function (context, cb) {
         }
       })
       .then(function (res) {
-        console.log(res.data);
         
+        // Sned content to users DM channel
         if (res.data && res.data.id) {
-          console.log('https://discordapp.com/api/v6/channels/' + res.data.id + '/messages');
-          axios.post('https://discordapp.com/api/v6/channels/' + res.data.id + '/messages', 
-          {
+          axios.post('https://discordapp.com/api/v6/channels/' + res.data.id + '/messages', {
             "content": "Netflix monthly 100 Baht.",
             "embed": {
               "title": "Netflix",
@@ -58,11 +58,9 @@ module.exports = function (context, cb) {
               'Authorization': 'Bot ' + context.secrets.botId,
               'Content-Type': 'application/json'
             }
-          })
+          });
         }
-        
       });
-    
     });
     
     cb();
