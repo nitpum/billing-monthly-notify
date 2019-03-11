@@ -28,7 +28,7 @@ module.exports = function (context, cb) {
         console.log(res.data);
         
         if (res.data && res.data.id) {
-          console.log(res.data.id);
+          console.log(res.data);
           console.log('https://discordapp.com/api/v6/channels/' + res.data.id + '/messages');
           axios.post('https://discordapp.com/api/v6/channels/' + res.data.id + '/messages', 
           {
