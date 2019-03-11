@@ -26,7 +26,7 @@ module.exports = function (context, cb) {
         }
       })
       .then(function (res) {
-        console.log(res);
+        console.log(res.body);
       });
     
     });
