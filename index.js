@@ -2,9 +2,10 @@ const qrcode = require('qrcode');
 const promptpay = require('promptpay-qr');
 const axios = require('axios');
 
-module.exports = function (context) {
+module.exports = function (context, cb) {
   var user = context.secrets.users;
   var amount = context.secrets.amount;
+  console.log(users);
 
   const payload = generatePayload(context.secrets.promptpayId, { amount });
   var options = { type: 'png', color: { dark: '#003b6a', light: '#f7f8f7' } }
