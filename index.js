@@ -31,7 +31,29 @@ module.exports = function (context, cb) {
           console.log(res.data.id);
           console.log('https://discordapp.com/api/v6/channels/' + res.data.id + '/messages');
           axios.post('https://discordapp.com/api/v6/channels/' + res.data.id + '/messages', 
-          {"content": "Test"},
+          {
+            "content": "Netflix monthly 100 Baht.",
+            "embed": {
+              "title": "Netflix",
+              "url": "https://discordapp.com",
+              "color": 9895936,
+              "image": {
+                "url": context.secrets.promptpayQr
+              },
+              "fields": [
+                {
+                  "name": "Promptpay",
+                  "value": context.secret.promptpayId,
+                  "inline": true
+                },
+                {
+                  "name": "Value (Baht)",
+                  "value": "100",
+                  "inline": true
+                }
+              ]
+            }
+          },
           {
             headers: {
               'Authorization': 'Bot ' + context.secrets.botId,
