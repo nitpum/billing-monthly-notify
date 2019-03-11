@@ -7,7 +7,6 @@ module.exports = function (context, cb) {
   var amount = context.secrets.amount;
   console.log(users);
 
-  /*
   const payload = generatePayload(context.secrets.promptpayId, { amount });
   var options = { type: 'png', color: { dark: '#003b6a', light: '#f7f8f7' } }
   new Promise((resolve, reject) => {
@@ -29,5 +28,6 @@ module.exports = function (context, cb) {
         console.log(res);
       });
     
-  });*/
+  });
+  cb();
 }
