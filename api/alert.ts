@@ -46,7 +46,7 @@ export default async (req: NowRequest, res: NowResponse) => {
               },
               {
                 name: 'Value (Baht)',
-                value: '100',
+                value: amount,
                 inline: true,
               },
             ],
@@ -63,4 +63,5 @@ export default async (req: NowRequest, res: NowResponse) => {
   })
 
   res.status(200)
+  res.send('')
 }
