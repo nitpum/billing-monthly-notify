@@ -20,5 +20,8 @@
     "axios": "^0.18.1",
     "promptpay-qr": "^0.4.4",
     "qrcode": "^1.3.3"
+  },
+  "devDependencies": {
+    "@now/node": "^1.6.1"
   }
 }
