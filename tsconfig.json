@@ -6,5 +6,7 @@
       "models/*": ["./src/models/*"],
       "modules/*": ["./src/modules/*"]
     }
-  }
+  },
+  "include": ["**/*.ts"],
+  "exclude": ["node_modules"]
 }
