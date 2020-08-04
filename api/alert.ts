@@ -58,6 +58,7 @@ const sendUserAlert = (userId: string): Promise<any> => {
       resolve()
     } catch (err) {
       console.error(err)
+      console.error(`Error on userId: ${userId}`)
       reject(err)
     }
   })
