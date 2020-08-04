@@ -8,7 +8,7 @@ const sendUserAlert = (userId: string): Promise<any> => {
   const amount = process.env.NETFLIX_AMOUNT
 
   return new Promise(async (resolve, reject) => {
-    console.log(`requesting DM: ${userid}`)
+    console.log(`requesting DM: ${userId}`)
     try {
       const {
         data: { id },
@@ -22,7 +22,7 @@ const sendUserAlert = (userId: string): Promise<any> => {
           },
         },
       )
-
+      console.log(`sending to DM: ${id}`)
       await axios.post(
         `https://discordapp.com/api/v6/channels/${id}/messages`,
         {
@@ -57,6 +57,7 @@ const sendUserAlert = (userId: string): Promise<any> => {
       )
       resolve()
     } catch (err) {
+      console.error(err)
       reject(err)
     }
   })
