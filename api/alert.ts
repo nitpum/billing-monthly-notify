@@ -63,6 +63,7 @@ const sendUserAlert = (userId: string): Promise<any> => {
 
 export default async (_: NowRequest, res: NowResponse) => {
   const users = process.env.DISCORD_USERS.split(",");
+  console.log(`users: ${users}`);
   await Promise.all(users.map((userId) => sendUserAlert(userId)));
   res.status(200);
   res.send("");
