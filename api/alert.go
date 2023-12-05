@@ -5,6 +5,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"io"
+	"log/slog"
 	"net/http"
 	"os"
 	"strings"
@@ -21,7 +22,6 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 	var wg sync.WaitGroup
 
 	usersList := strings.Split(userIds, ",")
-	fmt.Println(usersList)
 	for _, userId := range usersList {
 		wg.Add(1)
 
@@ -38,13 +38,16 @@ func notifyUser(wg *sync.WaitGroup, userId string) {
 
 	channelId, err := getUserDMChannelId(userId)
 	if err != nil {
-		fmt.Printf("Can't get user DM channel(%s): %vn", userId, err)
+		slog.Error("Can't get user DM channel", "userId", userId, "error", err)
 		return
 	}
 
-	fmt.Printf("Send message to userId: %s(channel: %s)\n", userId, channelId)
+	slog.Info("Sending message to",
+		"userId", userId,
+		"channelId", channelId,
+	)
 	sendMessageToUser(channelId)
-	fmt.Printf("Successfully sent message to userId: %s(channel: %s)\n", userId, channelId)
+	slog.Info("Successfully sent message", "userId", userId, "channelId", channelId)
 }
 
 func getUserDMChannelId(userId string) (string, error) {
@@ -137,7 +140,7 @@ func sendMessageToUser(channelId string) error {
 	}
 
 	if resp.StatusCode == http.StatusUnauthorized {
-		return fmt.Errorf("unauthorized. When sending message to user")
+		return fmt.Errorf("unauthorized. when sending message to user")
 	}
 
 	if resp.StatusCode == http.StatusOK {
